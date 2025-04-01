@@ -1,0 +1,24 @@
+link1_joint_controller:
+  type: "position_controllers/JointPositionController"
+  joint: "link1_joint"
+  pid: {p: 100.0, i: 0.1, d: 5.0}
+
+link2_joint_controller:
+  type: "position_controllers/JointPositionController"
+  joint: "link2_joint"
+  pid: {p: 100.0, i: 0.1, d: 5.0}
+
+gripper_control_controller:
+  type: "position_controllers/JointPositionController"
+  joint: "gripper_control_joint"
+  pid: {p: 100.0, i: 0.1, d: 5.0}
+
+gripper_left_controller:
+  type: "position_controllers/JointPositionController"
+  joint: "gripper_left_joint"
+  pid: {p: 100.0, i: 0.1, d: 5.0}
+
+joint_state_controller:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+

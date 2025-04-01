@@ -1,0 +1,16 @@
+<launch>
+  <!-- Định nghĩa argument 'model', nhưng cần giá trị mặc định hoặc truyền từ bên ngoài -->
+  <arg name="model" default="$(find tank_robot5)/urdf/tank_robot5.urdf" />
+
+  <!-- Load robot_description từ file URDF -->
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!-- Khởi động joint_state_publisher_gui để điều khiển khớp (GUI) -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <!-- Khởi động robot_state_publisher để xuất bản TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Khởi động RViz với file cấu hình -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tank_robot5)/rviz/rviz.rviz" />
+</launch>

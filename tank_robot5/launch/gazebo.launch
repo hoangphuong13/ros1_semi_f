@@ -1,0 +1,91 @@
+<launch>
+
+    <!-- Đường dẫn tới mô hình robot -->
+    <arg name="model" value="$(find tank_robot5)/urdf/tank_robot5.urdf" />
+
+    <!-- Chuyển đổi file Xacro thành URDF -->
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+    <!-- Khởi động Gazebo với môi trường rỗng -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="false" />
+        <arg name="gui" value="true" />
+        <arg name="paused" value="false" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="headless" value="false" />
+    </include>
+
+    <!-- Xuất transform từ base_link tới base_footprint -->
+    <node
+        name="tf_footprint_base"
+        pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0 0 0 0 base_link base_footprint 10" />
+
+    <!-- Spawn Robot -->
+    <node
+        name="urdf_spawner"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        respawn="false"
+        output="screen"
+        args="-z 0.0 -unpause -urdf -model tank_robot5 -param robot_description" />
+
+    <!-- Tải thông số joint -->
+    <rosparam command="load" file="$(find tank_robot5)/config/joint_names_tank_robot5.yaml" />
+
+    <!-- Giả lập hiệu chỉnh joint -->
+    <node
+        name="fake_joint_calibration"
+        pkg="rostopic"
+        type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+
+    <!-- Khởi động bộ điều khiển -->
+    <node
+        name="two_dof_arm_controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        args="joint_state_controller link1_joint_controller link2_joint_controller" />
+
+    <!-- Khởi động bộ điều khiển gripper -->
+    <node
+        name="gripper_controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        args="gripper_control_controller gripper_left_controller" />
+
+<!-- Khởi động RViz với file cấu hình -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tank_robot5)/rviz/rviz.rviz" />
+  
+  <!-- Load robot_description từ file URDF -->
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!-- Khởi động joint_state_publisher_gui để điều khiển khớp (GUI) -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <!-- Khởi động robot_state_publisher để xuất bản TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <!-- 1. Khởi động node navsat_transform_node để xử lý dữ liệu GPS -->
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" output="screen">
+        <!-- Cấu hình tham số cho navsat_transform_node -->
+        <param name="magnetic_declination_radians" value="0.0" /> <!-- Độ lệch từ trường (radian) -->
+        <param name="yaw_offset" value="0.0" /> <!-- Độ lệch góc yaw nếu có -->
+        <param name="zero_altitude" value="false" /> <!-- Không đặt độ cao về 0 -->
+        <param name="publish_filtered_gps" value="true" /> <!-- Xuất bản GPS đã lọc -->
+        
+        <!-- Remap các topic -->
+        <remap from="/gps/fix" to="/gps/fix" /> <!-- Topic từ plugin GPS -->
+        <remap from="/odometry/filtered" to="/odom" /> <!-- Topic odometry đầu vào -->
+        <remap from="/odometry/gps" to="/odom_gps" /> <!-- Topic tọa độ GPS đã chuyển đổi -->
+    </node>
+
+    <!-- 2. Xuất transform từ gps_link tới base_link (nếu có gps_link trong URDF) -->
+    <node
+        name="tf_gps_base"
+        pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0.1 0 0 0 base_link gps_link 100" /> <!-- GPS cách base_link 10cm theo trục Z -->
+</launch>
+

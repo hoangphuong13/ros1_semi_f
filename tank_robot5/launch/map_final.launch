@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!-- Đường dẫn tới mô hình robot -->
+    <arg name="model" value="$(find tank_robot5)/urdf/tank_robot5.urdf" />
+
+    <!-- Chuyển đổi file Xacro thành URDF -->
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+    <!-- Đường dẫn tới file world -->
+    <arg name="world" default="$(find tank_robot5)/urdf/mapper.world"/>
+
+    <!-- Khởi động Gazebo với map đã tạo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world)" />
+        <arg name="paused" value="false" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="gui" value="true" />
+    </include>
+      <node name="controller" pkg="tank_robot5" type="controller.py" output="screen" />
+
+    <!-- Spawn Robot -->
+    <node
+        name="urdf_spawner"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        respawn="false"
+        output="screen"
+        args="-z 0.0 -unpause -urdf -model tank_robot5 -param robot_description" />
+
+    <!-- Tải thông số joint -->
+    <rosparam command="load" file="$(find tank_robot5)/config/joint_names_tank_robot5.yaml" />
+
+    <!-- Giả lập hiệu chỉnh joint -->
+    <node
+        name="fake_joint_calibration"
+        pkg="rostopic"
+        type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+
+    <!-- Khởi động bộ điều khiển -->
+    <node
+        name="two_dof_arm_controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        args="joint_state_controller link1_joint_controller link2_joint_controller" />
+
+    <!-- Khởi động bộ điều khiển gripper -->
+    <node
+        name="gripper_controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        args="gripper_control_controller gripper_left_controller" />
+
+    <!-- Khởi động RViz với file cấu hình -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tank_robot5)/rviz/rviz.rviz" />
+
+    <!-- Khởi động robot_state_publisher để xuất bản TF -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="laser_frame" value="lidar_link"/>
+    <param name="map_frame" value="map"/>
+    <param name="delta" value="0.05"/>
+    <param name="maxUrange" value="10.0"/>
+    <param name="sigma" value="0.05"/>
+    <param name="kernelSize" value="1"/>
+    <param name="lstep" value="0.05"/>
+    <param name="astep" value="0.05"/>
+    <param name="iterations" value="5"/>
+    <param name="lsigma" value="0.075"/>
+    <param name="ogain" value="3.0"/>
+    <param name="throttle_scans" value="1"/>
+    <param name="minimumScore" value="300"/> <!-- Tăng để giảm tạo bản đồ mới -->
+    <param name="particles" value="1000"/> <!-- Tăng để bản đồ ổn định hơn -->
+    <param name="linearUpdate" value="0.5"/> <!-- Giảm tần suất cập nhật -->
+    <param name="angularUpdate" value="0.3"/> <!-- Giảm tần suất cập nhật -->
+    <param name="map_update_interval" value="1.0"/> <!-- Cập nhật ít thường xuyên hơn -->
+</node>
+
+<!-- Nếu cần navsat_transform_node -->
+<node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform">
+    <param name="magnetic_declination_radians" value="0.0"/>
+    <param name="yaw_offset" value="0.0"/>
+    <remap from="/gps/fix" to="/gps/fix"/>
+    <remap from="/imu/data" to="/imu/data"/>
+    <remap from="/odometry/filtered" to="/odom"/>
+</node>
+
+</launch>
+

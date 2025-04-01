@@ -1,0 +1,1080 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='tank_robot5'>
+      <link name='base_link'>
+        <inertial>
+          <pose>-0.002141 0.000356 0.092173 0 -0 0</pose>
+          <mass>2.30902</mass>
+          <inertia>
+            <ixx>0.0114156</ixx>
+            <ixy>5.93885e-06</ixy>
+            <ixz>0.000965458</ixz>
+            <iyy>0.0180939</iyy>
+            <iyz>1.17925e-05</iyz>
+            <izz>0.0187945</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__camera_link_collision_1'>
+          <pose>0.039846 -0.000774 0.227606 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/camera_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__gps_link_collision_2'>
+          <pose>0.023148 0.000897 0.16507 -1.5708 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gps_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__lidar_link_collision_3'>
+          <pose>-0.097663 0.000971 0.271318 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/lidar_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__camera_link_visual_1'>
+          <pose>0.039846 -0.000774 0.227606 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/camera_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__gps_link_visual_2'>
+          <pose>0.023148 0.000897 0.16507 -1.5708 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gps_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__lidar_link_visual_3'>
+          <pose>-0.097663 0.000971 0.271318 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/lidar_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/FlatBlack</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <sensor name='camera_sensor' type='camera'>
+          <update_rate>30</update_rate>
+          <camera>
+            <horizontal_fov>1.39626</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>my_camera</cameraName>
+            <frameName>camera_link</frameName>
+            <imageTopicName>/camera/image_raw</imageTopicName>
+            <cameraInfoTopicName>/camera/camera_info</cameraInfoTopicName>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>0.039847 -0.000774 0.227606 0 -0 0</pose>
+        </sensor>
+        <sensor name='head_rplidar_sensor' type='ray'>
+          <visualize>1</visualize>
+          <update_rate>30</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>50</samples>
+                <resolution>1</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>6.28319</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.12</min>
+              <max>3.5</max>
+              <resolution>0.015</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_head_rplidar_controller' filename='libgazebo_ros_laser.so'>
+            <topicName>scan</topicName>
+            <frameName>lidar_link</frameName>
+            <gaussianNoise>0.01</gaussianNoise>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose>-0.097663 0.000971 0.271318 0 -0 0</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link1_joint' type='revolute'>
+        <pose relative_to='base_link'>0.162138 0.02575 0.090625 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>link1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1_link'>
+        <pose relative_to='link1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.026821 0.042255 0.023311 0 -0 0</pose>
+          <mass>0.0900303</mass>
+          <inertia>
+            <ixx>2.98565e-05</ixx>
+            <ixy>-8.79866e-06</ixy>
+            <ixz>4.92243e-08</ixz>
+            <iyy>1.96057e-05</iyy>
+            <iyz>-2.8296e-08</iyz>
+            <izz>2.63103e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/link1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/link1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='link2_joint' type='revolute'>
+        <pose relative_to='link1_link'>0.049832 0.086699 -0.01775 0 -0 0</pose>
+        <parent>link1_link</parent>
+        <child>link2_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2_link'>
+        <pose relative_to='link2_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.04697 0.0054 0.046636 0 -0 0</pose>
+          <mass>0.0351998</mass>
+          <inertia>
+            <ixx>1.40033e-05</ixx>
+            <ixy>9.59419e-08</ixy>
+            <ixz>4.42811e-07</ixz>
+            <iyy>1.7343e-05</iyy>
+            <iyz>-3.23607e-08</iyz>
+            <izz>5.06044e-06</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/link2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/link2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='gripper_control_joint' type='revolute'>
+        <pose relative_to='link2_link'>0.062819 -0.007808 0.0359 1.5708 -0 -0.028978</pose>
+        <parent>link2_link</parent>
+        <child>gripper_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+            <effort>50</effort>
+            <velocity>0.5</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='gripper_right_link'>
+        <pose relative_to='gripper_control_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.025878 0.004545 -0.002133 0 -0 0</pose>
+          <mass>0.00366991</mass>
+          <inertia>
+            <ixx>1.65372e-07</ixx>
+            <ixy>3.7131e-09</ixy>
+            <ixz>-1.9993e-22</ixz>
+            <iyy>7.74324e-07</iyy>
+            <iyz>-8.83604e-24</iyz>
+            <izz>9.34192e-07</izz>
+          </inertia>
+        </inertial>
+        <collision name='gripper_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gripper_right_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='gripper_right_link_visual'>
+          <pose>0 0.0112 0 0 -0 0.2</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gripper_right_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='gripper_left_joint' type='revolute'>
+        <pose relative_to='link2_link'>0.062866 -0.006824 0.022275 1.5708 -0 -0.028978</pose>
+        <parent>link2_link</parent>
+        <child>gripper_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>1.5708</upper>
+            <effort>50</effort>
+            <velocity>0.5</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='gripper_left_link'>
+        <pose relative_to='gripper_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.023783 -0.011167 -0.002836 0 -0 0</pose>
+          <mass>0.00366991</mass>
+          <inertia>
+            <ixx>2.05305e-07</ixx>
+            <ixy>1.50785e-07</ixy>
+            <ixz>-1.88751e-22</ixz>
+            <iyy>7.34392e-07</iyy>
+            <iyz>1.16721e-22</iyz>
+            <izz>9.34192e-07</izz>
+          </inertia>
+        </inertial>
+        <collision name='gripper_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gripper_left_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='gripper_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/gripper_left_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_left1_joint' type='revolute'>
+        <pose relative_to='base_link'>0.030041 0.107 0.021 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_left1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_left1_link'>
+        <pose relative_to='wheel_left1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0 0.017823 0 -0 0</pose>
+          <mass>0.0414808</mass>
+          <inertia>
+            <ixx>1.26297e-05</ixx>
+            <ixy>-2.30094e-38</ixy>
+            <ixz>-3.5266e-39</ixz>
+            <iyy>1.26297e-05</iyy>
+            <iyz>-5.77601e-22</iyz>
+            <izz>1.23455e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_left1_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_left1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_left1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_left1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_left2_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.029959 0.1065 0.021 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_left2_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_left2_link'>
+        <pose relative_to='wheel_left2_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0 0.017823 0 -0 0</pose>
+          <mass>0.0414808</mass>
+          <inertia>
+            <ixx>1.26297e-05</ixx>
+            <ixy>-1.00317e-22</ixy>
+            <ixz>-1.58991e-21</ixz>
+            <iyy>1.26297e-05</iyy>
+            <iyz>4.75821e-22</iyz>
+            <izz>1.23455e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_left2_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_left2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_left2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_left2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_right1_joint' type='revolute'>
+        <pose relative_to='base_link'>0.030041 -0.107 0.021 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_right1_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_right1_link'>
+        <pose relative_to='wheel_right1_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 -0.017177 0 -0 0</pose>
+          <mass>0.0414808</mass>
+          <inertia>
+            <ixx>1.26297e-05</ixx>
+            <ixy>-2.67046e-22</ixy>
+            <ixz>-4.90527e-22</ixz>
+            <iyy>1.26297e-05</iyy>
+            <iyz>4.50151e-22</iyz>
+            <izz>1.23455e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_right1_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_right1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_right1_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_right1_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_right2_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.029959 -0.106 0.021 1.5708 -0 0</pose>
+        <parent>base_link</parent>
+        <child>wheel_right2_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_right2_link'>
+        <pose relative_to='wheel_right2_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0 -0.017177 0 -0 0</pose>
+          <mass>0.0414808</mass>
+          <inertia>
+            <ixx>1.26297e-05</ixx>
+            <ixy>-1.0161e-22</ixy>
+            <ixz>-4.94387e-22</ixz>
+            <iyy>1.26297e-05</iyy>
+            <iyz>4.50151e-22</iyz>
+            <izz>1.23455e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_right2_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_right2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='wheel_right2_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/phuong/catkin_ws/src/tank_robot5/meshes/wheel_right2_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='gps_plugin' filename='libhector_gazebo_ros_gps.so'>
+        <alwaysOn>1</alwaysOn>
+        <updateRate>10.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <topicName>/gps/fix</topicName>
+        <velocityTopicName>/gps/fix_velocity</velocityTopicName>
+        <referenceLatitude>21.028511</referenceLatitude>
+        <referenceLongitude>105.804817</referenceLongitude>
+        <referenceAltitude>10.0</referenceAltitude>
+        <drift>0.001 0.001 0.001</drift>
+        <gaussianNoise>0.05 0.05 0.05</gaussianNoise>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <plugin name='diff_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <ros>
+          <namespace>/</namespace>
+          <remap>
+            <from>cmd_vel</from>
+            <to>/cmd_vel</to>
+          </remap>
+          <rosDebugLevel>INFO</rosDebugLevel>
+        </ros>
+        <leftJoint>wheel_left1_joint</leftJoint>
+        <leftJoint>wheel_left2_joint</leftJoint>
+        <rightJoint>wheel_right1_joint</rightJoint>
+        <rightJoint>wheel_right2_joint</rightJoint>
+        <wheelSeparation>0.1566</wheelSeparation>
+        <wheelDiameter>0.07</wheelDiameter>
+        <wheelAcceleration>1.0</wheelAcceleration>
+        <wheelTorque>10</wheelTorque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
+        <publishWheelTF>1</publishWheelTF>
+        <publishOdomTF>1</publishOdomTF>
+        <publishWheelJointState>1</publishWheelJointState>
+        <publishTf>1</publishTf>
+        <updateRate>100</updateRate>
+        <odometrySource>1</odometrySource>
+        <rosDebugLevel>info</rosDebugLevel>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <frame name='camera_joint' attached_to='base_link'>
+        <pose>0.039846 -0.000774 0.227606 0 -0 0</pose>
+      </frame>
+      <frame name='camera_link' attached_to='camera_joint'/>
+      <frame name='gps_joint' attached_to='base_link'>
+        <pose>0.023148 0.000897 0.16507 -1.5708 0 0</pose>
+      </frame>
+      <frame name='gps_link' attached_to='gps_joint'/>
+      <frame name='lidar_joint' attached_to='base_link'>
+        <pose>-0.097663 0.000971 0.271318 0 -0 0</pose>
+      </frame>
+      <frame name='lidar_link' attached_to='lidar_joint'/>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='unit_box'>
+      <pose>1.47323 0.391043 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <state world_name='default'>
+      <sim_time>532 1000000</sim_time>
+      <real_time>535 327961530</real_time>
+      <wall_time>1743048661 474079571</wall_time>
+      <iterations>532001</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tank_robot5'>
+        <pose>0.047228 0.01263 0.003923 1.8e-05 -0.000408 0.587189</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>0.047228 0.01263 0.003923 1.8e-05 -0.000408 0.587189</pose>
+          <velocity>-0.000402 -0.000335 5e-05 0.001671 -0.002094 -0.001711</velocity>
+          <acceleration>0.087471 -0.059528 0.066054 -0.678511 -0.557949 -0.375882</acceleration>
+          <wrench>0.201973 -0.137452 0.152521 0 -0 0</wrench>
+        </link>
+        <link name='gripper_left_link'>
+          <pose>0.264213 0.182524 0.174523 -3.14154 0.02857 0.587098</pose>
+          <velocity>4.8e-05 -0.000498 0.000203 0.00097 -0.000925 -0.001562</velocity>
+          <acceleration>0.035984 0.16931 -0.258562 -0.695349 -0.438843 -0.216997</acceleration>
+          <wrench>0.000132 0.000621 -0.000949 0 -0 0</wrench>
+        </link>
+        <link name='gripper_right_link'>
+          <pose>0.271723 0.171156 0.173539 -3.14159 0.028537 0.587137</pose>
+          <velocity>3.8e-05 -0.000505 0.00021 0.000716 -0.00155 -0.001489</velocity>
+          <acceleration>0.039901 0.175828 -0.189169 0.323939 -0.625832 -3.11666</acceleration>
+          <wrench>0.000146 0.000645 -0.000694 0 -0 0</wrench>
+        </link>
+        <link name='link1_link'>
+          <pose>0.167912 0.123873 0.094613 1.57081 -0.000387 0.58719</pose>
+          <velocity>-0.000432 -0.000675 0.000498 -0.003233 0.004613 -0.001206</velocity>
+          <acceleration>0.067327 0.042734 0.069259 -1.73945 0.545878 0.27777</acceleration>
+          <wrench>0.006061 0.003847 0.006235 0 -0 0</wrench>
+        </link>
+        <link name='link2_link'>
+          <pose>0.199533 0.166237 0.18132 1.57077 -0.000439 0.587191</pose>
+          <velocity>1.5e-05 -0.000427 9.2e-05 0.000384 -0.001816 -0.001328</velocity>
+          <acceleration>0.022724 0.17559 -0.133306 1.00793 -1.0231 -3.1065</acceleration>
+          <wrench>0.0008 0.006181 -0.004692 0 -0 0</wrench>
+        </link>
+        <link name='wheel_left1_link'>
+          <pose>0.012954 0.118342 0.024946 1.5706 1.33911 0.587002</pose>
+          <velocity>-0.000276 -7.2e-05 0.000849 0.00293 -0.011177 -0.000356</velocity>
+          <acceleration>0.113151 0.323903 1.78709 -2.39766 0.937492 0.395436</acceleration>
+          <wrench>0.004694 0.013436 0.07413 0 -0 0</wrench>
+        </link>
+        <link name='wheel_left2_link'>
+          <pose>-0.036722 0.084687 0.02491 1.57058 -0.728115 0.587325</pose>
+          <velocity>-0.000349 -0.000224 1e-06 0.009513 -0.013902 -0.001267</velocity>
+          <acceleration>0.095688 -0.053164 -0.001527 -0.819347 -0.283118 -2.46813</acceleration>
+          <wrench>0.003969 -0.002205 -6.3e-05 0 -0 0</wrench>
+        </link>
+        <link name='wheel_right1_link'>
+          <pose>0.131505 -0.059801 0.024932 -1.57176 -1.04226 -2.55356</pose>
+          <velocity>-0.000387 -0.000449 6e-06 0.013922 -0.018346 0.00442</velocity>
+          <acceleration>0.078854 -0.138644 0.043321 2.83765 0.677373 2.00275</acceleration>
+          <wrench>0.003271 -0.005751 0.001797 0 -0 0</wrench>
+        </link>
+        <link name='wheel_right2_link'>
+          <pose>0.081005 -0.092218 0.02491 1.57082 -0.218832 0.58716</pose>
+          <velocity>-0.000614 -0.000447 -9.4e-05 0.017756 -0.024926 -0.001808</velocity>
+          <acceleration>0.096692 -0.104819 0.056605 0.580564 -1.3899 -2.08793</acceleration>
+          <wrench>0.004011 -0.004348 0.002348 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose>1.47323 0.391043 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.47323 0.391043 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004709 -9.78112 9.78158 0.712677 -0.009414 -4.3e-05</acceleration>
+          <wrench>-0.004709 -9.78112 9.78158 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5 -5 2 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

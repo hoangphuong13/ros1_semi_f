@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+ 	Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+ 	For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="tank_robot5">
+
+  <!-- Base link -->
+  <link
+	name="base_link">
+	<inertial>
+  	<origin
+    	xyz="0.000101860296610273 0.000383653908917814 0.077831584172523"
+    	rpy="0 0 0" />
+  	<mass
+    	value="2.09733338044362" />
+  	<inertia
+    	ixx="0.00658871302788378"
+    	ixy="-6.33493412731475E-06"
+    	ixz="0.000279659251384072"
+    	iyy="0.0119849438490807"
+    	iyz="1.71666235498634E-06"
+    	izz="0.0173418955344604" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/base_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="1 0 0 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/base_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+ <gazebo reference="base_link">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+ 
+  <!-- wheel left1 -->
+  <link
+	name="wheel_left1_link">
+	<inertial>
+  	<origin
+    	xyz="-5.55111512312578E-17 4.16333634234434E-17 0.0178230616302186"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0414808039998362" />
+  	<inertia
+    	ixx="1.26297041000083E-05"
+    	ixy="-2.30093800126185E-38"
+    	ixz="-3.52660070687731E-39"
+    	iyy="1.26297041000083E-05"
+    	iyz="-5.77601258280972E-22"
+    	izz="1.23455181234334E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_left1_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_left1_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+   <gazebo reference="wheel_left1_link">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+
+  <joint
+	name="wheel_left1_joint"
+	type="continuous">
+	<origin
+  	xyz="0.030040943208751 0.107 0.020999720595931"
+  	rpy="1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="wheel_left1_link" />
+	<axis
+  	xyz="0 0 1" />
+  </joint>
+ 
+	<!-- wheel left2 -->
+  <link
+	name="wheel_left2_link">
+	<inertial>
+  	<origin
+    	xyz="-2.77555756156289E-17 4.16333634234434E-16 0.0178230616302186"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0414808039998362" />
+  	<inertia
+    	ixx="1.26297041000083E-05"
+    	ixy="-1.00317351992554E-22"
+    	ixz="-1.58990528709187E-21"
+    	iyy="1.26297041000083E-05"
+    	iyz="4.75821462374673E-22"
+    	izz="1.23455181234334E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_left2_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_left2_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+     <gazebo reference="wheel_left2_link">
+  <material>Gazebo/Green</material>
+</gazebo>
+  <joint
+	name="wheel_left2_joint"
+	type="continuous">
+	<origin
+  	xyz="-0.029959056791249 0.1065 0.0209997205959308"
+  	rpy="1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="wheel_left2_link" />
+	<axis
+  	xyz="0 0 1" />
+  </joint>
+ 
+	<!-- wheel right1 -->
+  <link
+	name="wheel_right1_link">
+	<inertial>
+  	<origin
+    	xyz="0 1.38777878078145E-17 -0.0171769383697813"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0414808039998362" />
+  	<inertia
+    	ixx="1.26297041000083E-05"
+    	ixy="-2.67045944210272E-22"
+    	ixz="-4.90527107634727E-22"
+    	iyy="1.26297041000083E-05"
+    	iyz="4.50151290698444E-22"
+    	izz="1.23455181234334E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_right1_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_right1_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+     <gazebo reference="wheel_right1_link">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+
+  <joint
+	name="wheel_right1_joint"
+	type="continuous">
+	<origin
+  	xyz="0.030040943208751 -0.107 0.020999720595931"
+  	rpy="1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="wheel_right1_link" />
+	<axis
+  	xyz="0 0 1" />
+  </joint>
+ 
+	<!-- wheel right2 -->
+  <link
+	name="wheel_right2_link">
+	<inertial>
+  	<origin
+    	xyz="8.32667268468867E-17 -2.77555756156289E-17 -0.0171769383697813"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0414808039998362" />
+  	<inertia
+    	ixx="1.26297041000083E-05"
+    	ixy="-1.01609821699666E-22"
+    	ixz="-4.9438728382664E-22"
+    	iyy="1.26297041000083E-05"
+    	iyz="4.50151290698444E-22"
+    	izz="1.23455181234333E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_right2_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/wheel_right2_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+      <gazebo reference="wheel_right2_link">
+  <material>Gazebo/Green</material>
+</gazebo>
+
+
+
+  <joint
+	name="wheel_right2_joint"
+	type="continuous">
+	<origin
+  	xyz="-0.029959056791249 -0.106 0.0209997205959308"
+  	rpy="1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="wheel_right2_link" />
+	<axis
+  	xyz="0 0 1" />
+  </joint>
+ 
+ 
+	<!-- link1 -->
+  <link
+	name="link1_link">
+	<inertial>
+  	<origin
+    	xyz="0.0268208044691256 0.0422548226451087 0.0233110224033556"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0900303480349773" />
+  	<inertia
+    	ixx="2.98564994728307E-05"
+    	ixy="-8.79866117290079E-06"
+    	ixz="4.92242513586741E-08"
+    	iyy="1.96056816874544E-05"
+    	iyz="-2.82959641151995E-08"
+    	izz="2.63103174477672E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/link1_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/link1_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+ <gazebo reference="link1_link">
+  <material>Gazebo/Red</material>
+</gazebo>
+ 
+  <joint
+	name="link1_joint"
+	type="continuous">
+	<origin
+  	xyz="0.16213799320936 0.0257504431070633 0.0906250725210088"
+  	rpy="1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="link1_link" />
+	<axis
+  	xyz="0 0 1" />
+
+    
+  </joint>
+ 
+	<!-- link2 -->
+  <link
+	name="link2_link">
+	<inertial>
+  	<origin
+    	xyz="0.0469696818776463 0.00539981149525653 0.0466363137970451"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0351997519899185" />
+  	<inertia
+    	ixx="1.40032536971721E-05"
+    	ixy="9.59419108470623E-08"
+    	ixz="4.42810505923508E-07"
+    	iyy="1.73430493338146E-05"
+    	iyz="-3.23606739251796E-08"
+    	izz="5.06044486180057E-06" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/link2_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/link2_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+  
+<gazebo reference="link2_link">
+  <material>Gazebo/Black</material>
+</gazebo>
+  <joint
+	name="link2_joint"
+	type="continuous">
+	<origin
+  	xyz="0.0498323547482368 0.0866991142990867 -0.0177499999999998"
+  	rpy="0 0 0" />
+	<parent
+  	link="link1_link" />
+	<child
+  	link="link2_link" />
+	<axis
+  	xyz="0 0 1" />
+  	
+
+    
+  </joint>
+ 
+<!-- Right Gripper Link -->
+<link name="gripper_right_link">
+	<inertial>
+  	<origin xyz="0.0258780432117297 0.00454477654115379 -0.00213316144660119" rpy="0 0 0" />
+  	<mass value="0.00366991044442369" />
+  	<inertia ixx="1.65372374888769E-07" ixy="3.71309728414862E-09" ixz="-1.99929536232398E-22"
+           	iyy="7.74324288386045E-07" iyz="-8.83604007636615E-24" izz="9.34191797608178E-07" />
+	</inertial>
+	<visual>
+  	<origin xyz="0 0.0112 0" rpy="0 0 0.2" />
+  	<geometry>
+    	<mesh filename="package://tank_robot5/meshes/gripper_right_link.STL" />
+  	</geometry>
+  	<material name="">
+    	<color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin xyz="0 0 0" rpy="0 0 0" />
+  	<geometry>
+    	<mesh filename="package://tank_robot5/meshes/gripper_right_link.STL" />
+  	</geometry>
+	</collision>
+</link>
+
+<!-- Left Gripper Link -->
+<link name="gripper_left_link">
+	<inertial>
+  	<origin xyz="0.0237830032837864 -0.0111667752319355 -0.00283618320258641" rpy="0 0 0" />
+  	<mass value="0.00366991044442369" />
+  	<inertia ixx="2.0530457650203E-07" ixy="1.5078460448041E-07" ixz="-1.88750622816007E-22"
+           	iyy="7.34392086772784E-07" iyz="1.16721204276473E-22" izz="9.34191797608178E-07" />
+	</inertial>
+	<visual>
+  	<origin xyz="0 0 0" rpy="0 0 0" />
+  	<geometry>
+    	<mesh filename="package://tank_robot5/meshes/gripper_left_link.STL" />
+  	</geometry>
+  	<material name="">
+    	<color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin xyz="0 0 0" rpy="0 0 0" />
+  	<geometry>
+    	<mesh filename="package://tank_robot5/meshes/gripper_left_link.STL" />
+  	</geometry>
+	</collision>
+</link>
+
+<!-- Single Control Joint (Master Joint) -->
+<joint name="gripper_control_joint" type="revolute">
+	<origin xyz="0.0628189456741686 -0.00780808751750425 0.0359" rpy="1.5707963267949 0 -0.028978387988715" />
+	<parent link="link2_link" />
+	<child link="gripper_right_link" /> <!-- Right gripper attached here -->
+	<axis xyz="0 0 1" /> <!-- Rotate around Z-axis -->
+	<limit lower="-1.5708" upper="1.5708" effort="50" velocity="0.5" /> <!-- ±90° -->
+</joint>
+
+<!-- Left Gripper Joint (Mimic Joint) -->
+<joint name="gripper_left_joint" type="revolute">
+	<origin xyz="0.0628662736353975 -0.00682437348245404 0.0222749999999998" rpy="1.5707963267949 0 -0.028978387988715" />
+	<parent link="link2_link" />
+	<child link="gripper_left_link" />
+	<axis xyz="0 0 1" /> <!-- Same direction, but mimic will invert it -->
+	<limit lower="-1.5708" upper="1.5708" effort="50" velocity="0.5" /> <!-- ±90° -->
+	<!-- Mimic gripper_control_joint with opposite rotation -->
+	<mimic joint="gripper_control_joint" multiplier="-1.0" offset="0.0" />
+</joint>
+
+
+
+  <link
+	name="camera_link">
+	<inertial>
+  	<origin
+    	xyz="0.00697855527730011 -1.06579532171414E-05 0.012468333507948"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.107910438139434" />
+  	<inertia
+    	ixx="7.12550253062255E-05"
+    	ixy="2.33932196779487E-08"
+    	ixz="-4.92986158651601E-08"
+    	iyy="7.71002569801307E-06"
+    	iyz="2.44769054882994E-10"
+    	izz="7.02567402877273E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/camera_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/camera_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+      <gazebo reference="camera_link">
+  <material>Gazebo/Blue</material>
+</gazebo>
+
+  <joint
+	name="camera_joint"
+	type="fixed">
+	<origin
+  	xyz="0.0398464983353151 -0.00077408377455257 0.227605789912602"
+  	rpy="0 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="camera_link" />
+	<axis
+  	xyz="0 0 0" />
+  </joint>
+  <link
+	name="lidar_link">
+	<inertial>
+  	<origin
+    	xyz="-0.00712869032004082 2.01051559332588E-05 -0.0398485169669899"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.0988519659696647" />
+  	<inertia
+    	ixx="2.01670226712523E-05"
+    	ixy="1.77520034791046E-08"
+    	ixz="-2.26332784491913E-06"
+    	iyy="5.01382792579843E-05"
+    	iyz="7.53617057520781E-09"
+    	izz="6.58296362275907E-05" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/lidar_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.188235294117647 0.231372549019608 0.588235294117647 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/lidar_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  <joint
+	name="lidar_joint"
+	type="fixed">
+	<origin
+  	xyz="-0.0976627823325977 0.000970509112063533 0.271318441191774"
+  	rpy="0 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="lidar_link" />
+	<axis
+  	xyz="0 0 0" />
+  </joint>
+  <link
+	name="gps_link">
+	<inertial>
+  	<origin
+    	xyz="0.00710120952678969 0.00194546696155284 0.000109480095992986"
+    	rpy="0 0 0" />
+  	<mass
+    	value="0.00492734269723872" />
+  	<inertia
+    	ixx="5.30721988277249E-07"
+    	ixy="-1.25162605765906E-09"
+    	ixz="-5.82609648436738E-10"
+    	iyy="2.50348487806842E-07"
+    	iyz="4.052528259813E-09"
+    	izz="2.92177952785927E-07" />
+	</inertial>
+	<visual>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/gps_link.STL" />
+  	</geometry>
+  	<material
+    	name="">
+    	<color
+      	rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+  	</material>
+	</visual>
+	<collision>
+  	<origin
+    	xyz="0 0 0"
+    	rpy="0 0 0" />
+  	<geometry>
+    	<mesh
+      	filename="package://tank_robot5/meshes/gps_link.STL" />
+  	</geometry>
+	</collision>
+  </link>
+  
+    <gazebo reference="gps_link">
+  <material>Gazebo/White</material>
+</gazebo>
+  <joint
+	name="gps_joint"
+	type="fixed">
+	<origin
+  	xyz="0.023148376737541 0.000897373531776158 0.165070035372167"
+  	rpy="-1.5707963267949 0 0" />
+	<parent
+  	link="base_link" />
+	<child
+  	link="gps_link" />
+	<axis
+  	xyz="0 0 0" />
+  </joint>
+ 
+ 
+ 
+ 
+<gazebo> 
+  <!-- Bắt đầu khai báo cấu hình cho Gazebo -->
+  
+  <plugin name="gps_plugin" filename="libhector_gazebo_ros_gps.so"> 
+    <!-- Khai báo plugin GPS sử dụng thư viện "libhector_gazebo_ros_gps.so" -->
+    
+    <alwaysOn>true</alwaysOn> 
+    <!-- Luôn kích hoạt plugin GPS, ngay cả khi không có client nào subscribe -->
+
+    <updateRate>10.0</updateRate> 
+    <!-- Tần suất cập nhật dữ liệu GPS là 10 Hz (10 lần/giây) -->
+
+    <bodyName>base_link</bodyName> 
+    <!-- Xác định liên kết (link) mà cảm biến GPS gắn vào (ở đây là "base_link") -->
+    
+    <topicName>/gps/fix</topicName> 
+    <!-- Tên topic ROS xuất ra dữ liệu vị trí GPS (kiểu sensor_msgs/NavSatFix) -->
+
+    <velocityTopicName>/gps/fix_velocity</velocityTopicName> 
+    <!-- Tên topic ROS xuất ra dữ liệu vận tốc (kiểu geometry_msgs/Vector3Stamped) -->
+    
+    <referenceLatitude>21.028511</referenceLatitude> 
+    <!-- Giá trị vĩ độ gốc (ở đây là 21.028511 - tọa độ ở Hà Nội, Việt Nam) -->
+    
+    <referenceLongitude>105.804817</referenceLongitude> 
+    <!-- Giá trị kinh độ gốc (ở đây là 105.804817 - tọa độ ở Hà Nội, Việt Nam) -->
+
+    <referenceAltitude>10.0</referenceAltitude> 
+    <!-- Độ cao gốc so với mực nước biển (10 mét) -->
+
+    <drift>0.001 0.001 0.001</drift> 
+    <!-- Mô phỏng độ lệch (trôi) của tín hiệu GPS theo các trục X, Y, Z (đơn vị: mét) -->
+
+    <gaussianNoise>0.05 0.05 0.05</gaussianNoise> 
+    <!-- Mô phỏng nhiễu Gauss (ngẫu nhiên) trên các trục X, Y, Z (đơn vị: mét) -->
+    
+  </plugin> 
+  <!-- Kết thúc khai báo plugin GPS -->
+  
+</gazebo> 
+<!-- Kết thúc phần cấu hình cho Gazebo -->
+
+
+<gazebo reference="lidar_link">
+   <material>Gazebo/FlatBlack</material>
+   
+   <sensor type="ray" name="head_rplidar_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>10.0</update_rate> <!-- Giảm xuống 10 Hz -->
+      
+      <ray>
+         <scan>
+            <horizontal>
+               <samples>360</samples> <!-- Tăng lên 360 mẫu -->
+               <resolution>1</resolution>
+               <min_angle>-1.5708</min_angle>
+               <max_angle>1.5708</max_angle>
+            </horizontal>
+         </scan>
+         
+         <range>
+            <min>0.120</min>
+            <max>10</max>
+            <resolution>0.015</resolution>
+         </range>
+      </ray>
+      
+      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_laser.so">
+         <topicName>scan</topicName>
+         <frameName>lidar_link</frameName>
+         <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+   </sensor>
+</gazebo>
+<!-- Plugin Camera -->
+<gazebo reference="camera_link">  <!-- Gắn cảm biến vào liên kết (link) có tên 'camera_link' -->
+  <sensor type="camera" name="camera_sensor"> <!-- Khai báo một cảm biến loại camera với tên 'camera_sensor' -->
+    
+    <update_rate>30</update_rate> <!-- Tần suất cập nhật của camera là 30 Hz (30 khung hình/giây) -->
+    
+    <camera> <!-- Bắt đầu cấu hình các thông số cho camera -->
+      
+      <horizontal_fov>1.3962634</horizontal_fov> <!-- Góc nhìn ngang (Field of View) là 1.3962634 rad (~80 độ) -->
+      
+      <image> <!-- Cài đặt thông số ảnh mà camera chụp được -->
+        <width>640</width> <!-- Chiều rộng ảnh là 640 pixel -->
+        <height>480</height> <!-- Chiều cao ảnh là 480 pixel -->
+        <format>R8G8B8</format> <!-- Định dạng ảnh là RGB (8-bit cho mỗi kênh màu: đỏ, lục, lam) -->
+      </image>
+      
+    </camera> <!-- Kết thúc cấu hình camera -->
+    
+    <!-- Cấu hình plugin ROS cho camera -->
+    <plugin name="camera_controller" filename="libgazebo_ros_camera.so"> 
+      <!-- 'name' là tên plugin, 'filename' là file thư viện động (.so) giúp camera giao tiếp với ROS -->
+      
+      <alwaysOn>true</alwaysOn> <!-- Camera luôn hoạt động (không bị tắt khi không cần thiết) -->
+      
+      <updateRate>30.0</updateRate> <!-- Tần suất gửi dữ liệu hình ảnh là 30 Hz -->
+      
+      <cameraName>my_camera</cameraName> <!-- Tên camera được sử dụng trong ROS -->
+      
+      <frameName>camera_link</frameName> <!-- Tên frame (hệ tọa độ) gắn với camera -->
+      
+      <imageTopicName>/camera/image_raw</imageTopicName> <!-- Topic ROS phát hình ảnh thô (raw image) -->
+      
+      <cameraInfoTopicName>/camera/camera_info</cameraInfoTopicName> <!-- Topic ROS phát thông tin hiệu chỉnh camera -->
+      
+    </plugin> <!-- Kết thúc cấu hình plugin ROS -->
+    
+    <pose>0 0 0 0 0 0</pose> <!-- Vị trí và hướng của camera so với 'camera_link':
+                                (x, y, z, roll, pitch, yaw) = (0, 0, 0, 0, 0, 0) -->
+  </sensor> <!-- Kết thúc khai báo cảm biến camera -->
+</gazebo> <!-- Kết thúc cấu hình cho Gazebo -->
+
+ 
+<gazebo>
+  <plugin name="diff_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <!-- Bật xuất bản TF từ plugin để tạo TF odom -> base_link -->
+    <publishTf>true</publishTf>
+
+    <!-- ROS namespace và remap topic -->
+    <ros>
+      <namespace>/</namespace> <!-- Namespace mặc định là root -->
+      <remap from="cmd_vel" to="/cmd_vel"/> <!-- Remap topic cmd_vel -->
+      <remapping>odom:=/odom</remapping>
+      <rosDebugLevel>INFO</rosDebugLevel> <!-- Mức log: INFO -->
+    </ros>
+
+    <!-- Khai báo joint bánh xe (Chỉ chọn 1 joint cho mỗi bên) -->
+    <leftJoint>wheel_left1_joint</leftJoint> <!-- Joint bánh xe trái -->
+    <rightJoint>wheel_right1_joint</rightJoint> <!-- Joint bánh xe phải -->
+    <leftJoint>wheel_left2_joint</leftJoint> <!-- Joint bánh xe trái -->
+    <rightJoint>wheel_right2_joint</rightJoint> <!-- Joint bánh xe phải -->
+    <!-- Thông số bánh xe -->
+    <wheelSeparation>0.1566</wheelSeparation> <!-- Khoảng cách giữa hai bánh xe -->
+    <wheelDiameter>0.07</wheelDiameter> <!-- Đường kính bánh xe -->
+    <wheelAcceleration>1.0</wheelAcceleration> <!-- Gia tốc tối đa -->
+    <wheelTorque>10</wheelTorque> <!-- Mô-men xoắn tối đa -->
+    <velocityDecay>0.1</velocityDecay> <!-- Giúp giảm trượt bánh xe -->
+
+    <!-- Chủ đề và khung TF liên quan đến robot -->
+    <commandTopic>/cmd_vel</commandTopic> <!-- Nhận lệnh vận tốc -->
+    <odometryTopic>/odom</odometryTopic> <!-- Xuất dữ liệu odometry -->
+    <odometryFrame>odom</odometryFrame> <!-- Khung odometry -->
+    <robotBaseFrame>base_link</robotBaseFrame> <!-- Khung gốc của robot -->
+
+    <!-- Xuất dữ liệu TF và trạng thái joint -->
+    <publishOdom>true</publishOdom> <!-- Xuất bản dữ liệu odometry -->
+    <publishOdomTF>true</publishOdomTF> <!-- Xuất TF từ odom đến base_link -->
+    <publishWheelTF>false</publishWheelTF> <!-- Không xuất TF cho bánh xe -->
+    <publishWheelJointState>true</publishWheelJointState> <!-- Xuất joint state -->
+
+    <!-- Tần số cập nhật plugin -->
+    <updateRate>50</updateRate> <!-- Giảm xuống 50Hz để tránh quá tải -->
+
+    <!-- Cấu hình nguồn dữ liệu odometry -->
+    <odometrySource>encoder</odometrySource> <!-- Sử dụng encoder -->
+
+    <!-- Chế độ tương thích để tránh lỗi với phiên bản mới -->
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
+
+
+
+    <!-- Truyền động (Transmission) cho khớp link1 -->
+<transmission name="link1_joint_transmission">
+    <!-- Kiểu truyền động đơn giản (SimpleTransmission) -->
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <!-- Khai báo khớp (joint) link1_joint -->
+    <joint name="link1_joint">
+        <!-- Giao diện phần cứng: Điều khiển vị trí (PositionJointInterface) -->
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+
+    <!-- Khai báo bộ chấp hành (actuator) link1_servo -->
+    <actuator name="link1_servo">
+        <!-- Tỉ lệ giảm cơ khí: 1.0 (không giảm tốc) -->
+        <mechanicalReduction>1.0</mechanicalReduction>
+        <!-- <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+    </actuator>
+</transmission>
+
+<!-- Truyền động cho khớp link2 -->
+<transmission name="link2_joint_transmission">
+    <!-- Kiểu truyền động đơn giản -->
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <!-- Khai báo khớp link2_joint -->
+    <joint name="link2_joint">
+        <!-- Điều khiển vị trí của khớp -->
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+
+    <!-- Khai báo bộ chấp hành link2_servo -->
+    <actuator name="link2_servo">
+        <!-- Tỉ lệ giảm cơ khí: 1.0 (không giảm tốc) -->
+        <mechanicalReduction>1.0</mechanicalReduction>
+        <!-- <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> -->
+    </actuator>
+</transmission>
+
+<!-- Truyền động cho khớp điều khiển Gripper -->
+<transmission name="gripper_transmission">
+    <!-- Kiểu truyền động đơn giản -->
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <!-- Khai báo khớp gripper_control_joint -->
+    <joint name="gripper_control_joint">
+        <!-- Điều khiển vị trí của khớp -->
+        <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+
+    <!-- Khai báo bộ chấp hành gripper_motor -->
+    <actuator name="gripper_motor">
+        <!-- Tỉ lệ giảm cơ khí: 1 (không giảm tốc) -->
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+</transmission>
+
+<!-- Truyền động cho khớp Gripper bên trái -->
+<transmission name="gripper_left_transmission">
+    <!-- Kiểu truyền động đơn giản -->
+    <type>transmission_interface/SimpleTransmission</type>
+
+    <!-- Khai báo khớp gripper_left_joint -->
+    <joint name="gripper_left_joint">
+        <!-- Điều khiển vị trí của khớp -->
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+
+    <!-- Khai báo bộ chấp hành gripper_left_motor -->
+    <actuator name="gripper_left_motor">
+        <!-- Tỉ lệ giảm cơ khí: 1.0 (không giảm tốc) -->
+        <mechanicalReduction>1.0</mechanicalReduction>
+    </actuator>
+</transmission>
+
+<!-- Plugin ros_control để kết nối Gazebo với ROS -->
+<gazebo>
+    <!-- Khai báo plugin gazebo_ros_control -->
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <!-- Thiết lập không gian tên của robot -->
+        <robotNamespace>/</robotNamespace>
+    </plugin>
+</gazebo>
+
+</robot>
+
+
+

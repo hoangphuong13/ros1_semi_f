@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tank_robot5">
+
+    <xacro:macro name="links">
+        <xacro:property name="mass2" value="0.5" /> <!-- arbitrary value for mass -->
+        <xacro:property name="mass3" value="0.5" /> <!-- arbitrary value for mass -->
+        <xacro:property name="width2" value="0.2" /> <!-- Square dimensions (widthxwidth) of beams -->
+        <xacro:property name="width3" value="0.2" /> <!-- Square dimensions (widthxwidth) of beams -->
+        <xacro:property name="length2" value="1.0" /> <!-- First Link -->
+        <xacro:property name="length3" value="1.0" /> <!-- Second Link -->
+        <link name="link1_link">
+            <inertial>
+                <origin xyz="0.6 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass2}"/>
+                <inertia
+                    ixx="${mass2 / 12.0 * (width2*width2 + width2*width2)}" ixy="0.0" ixz="0.0"
+                    iyy="${mass2 / 12.0 * (length2*length2 + width2*width2)}" iyz="0.0"
+                    izz="${mass2 / 12.0 * (width2*width2 + length2*length2)}"/>
+            </inertial>
+            <visual>
+                <origin xyz="0.6 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${length2} ${width2} ${width2}"/>
+                </geometry>
+                <material name="black"/>
+            </visual>
+            <collision>
+                <origin xyz="0.6 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${length2} ${width2} ${width2}"/>
+                </geometry>
+            </collision>
+        </link>        
+        <joint name="link1_joint" type="revolute">
+            <origin xyz="0.0 0.0 0.6" rpy="0.0 0.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="first_link"/>
+            <axis xyz="0.0 -1.0 0.0"/>
+            <limit lower="0.0" upper="${PI}" effort="5.0" velocity="1.0"/>
+        </joint>
+        <link name="link2_link">
+            <inertial>
+                <origin xyz="-0.6 0.0 0.1" rpy="0.0 0.0 0.0"/>
+                <mass value="${mass3}"/>
+                <inertia
+                    ixx="${mass3 / 12.0 * (width3*width3 + width3*width3)}" ixy="0.0" ixz="0.0"
+                    iyy="${mass3 / 12.0 * (length3*length3 + width3*width3)}" iyz="0.0"
+                    izz="${mass3 / 12.0 * (width3*width3 + length3*length3)}"/>
+            </inertial>
+            <visual>
+                <origin xyz="-0.6 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${length3} ${width3} ${width3}"/>
+                </geometry>
+                <material name="white">
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="-0.6 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${length3} ${width3} ${width3}"/>
+                </geometry>
+            </collision>
+        </link>        
+        <joint name="link2_joint" type="revolute">
+            <origin xyz="1.1 0.0 0.2" rpy="0.0 0.0 0.0"/>
+            <parent link="link1_link"/>
+            <child link="link2_link"/>
+            <axis xyz="0.0 1.0 0.0"/>
+            <limit lower="0.0" upper="${PI}" effort="5.0" velocity="1.0"/>
+        </joint>
+        
+
+  
+    </xacro:macro>
+</robot>
